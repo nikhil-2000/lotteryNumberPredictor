@@ -13,12 +13,14 @@ cols = len(splitResults[0])
 
 for i in range(1,rows):
     for j in range(4,cols):
-        drawnNum = int(splitResults[i][j])
-        nums[drawnNum] += 1
+        stringNum = splitResults[i][j]
+        if stringNum != '':
+            drawnNum = int(splitResults[i][j])
+            nums[drawnNum] += 1
 
 filledNums = [ (k,v) for k, v in nums.items() ]
 print(filledNums)
-filledNums.sort(key = itemgetter(1))
+filledNums.sort(key = lambda x:x[1])
 
 for i in range(7):
-    print(filledNums.pop())
+    print("Number: %d, Count: %d" % filledNums.pop())
